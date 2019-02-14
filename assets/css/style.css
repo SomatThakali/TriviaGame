@@ -1,0 +1,55 @@
+
+
+body{
+    font-family: 'Concert One';
+}
+#container{
+    position: absolute;
+    height: 600px;
+    width: 800px;
+    background-color: yellow;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+
+}
+
+#forms{
+   padding-top: 50px;
+}
+
+#start, #gameMessage, #win-loss-message{
+    position: absolute;
+    text-align: center;
+    font-size: 80px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+#question{
+    
+    font-size: 30px;
+    padding: 10px 0px 10px 40px ;
+    margin: 25px 10px 0 55px;
+    height: 60px;
+    width: 700px;
+    border-radius: 10px;
+    background-color: #d6e755;
+}
+.option{
+    height: 40px;
+    width: 700px;
+    padding: 10px 0px 10px 40px ;
+    margin: 25px 10px 0 55px;
+    border-radius: 10px;
+    background-color: #d6e755;
+    
+}
+
+
+
+
+input[type="radio"]{
+    visibility:hidden;
+}
