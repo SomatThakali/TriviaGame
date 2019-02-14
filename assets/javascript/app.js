@@ -19,11 +19,16 @@ $(document).ready (function(){
             question: "What is the capital of USA? ",
             possibleAnswers: ['New York', 'Boston', 'Washingon DC', 'Maryland'],
             answer: 2
-        }
+        },
+        {
+            question: "What is the capital of Mustang? ",
+            possibleAnswers: ['Pokhara', 'Kathmandu', 'Jomsom', 'Delhi'],
+            answer: 2
+        },
         
     ] // end of the questions array
 
-
+   
 
 
     var currentQuestion = 0;
@@ -43,6 +48,9 @@ $(document).ready (function(){
         $('#choice4').text(index.possibleAnswers[3]);
     }
 
+  
+
+    
     function loadNextQuestion (){
 
         $('input').on('click', function(){
@@ -63,43 +71,74 @@ $(document).ready (function(){
                 loadQuestion(currentQuestion); 
             }
 
-            selectedOption = false;
+            // selectedOption = false;
             currentQuestion++;
 
             if(currentQuestion == totalQuestion){
                 console.log('You are finished');
                 $("#forms").hide();
-            //    message.textContent = 'Finish';
-               reset();
-               return;
+                message.textContent = 'Finish';
+                // location.reload();
+                setTimeout(location.reload.bind(location), 3000); // After 5 seconds the page will reload
+                return;
             }
             loadQuestion(currentQuestion);
             
         });
-
+    
+  
         
     } // end of the loadNextQuestion function
+
 
 
     $("#start").on('click', function(){
         
         $("#start").hide();
         $("#forms").show();
-        loadNextQuestion();
         loadQuestion(currentQuestion);
-        
-        
+    //     var count = 10;
+    //     setInterval(function(){
+    //         loadQuestion(currentQuestion);
+    //         document.getElementById('count').innerHTML='Time Remaining ' + count + ': Seconds';
+    //         count--;
+    //         if (count == 0 && totalQuestion >0){
+    //             currentQuestion++;
+                
+    //             loadNextQuestion();
+    //             count=10;
+    //             return;
+           
+    //         }
+    // }, 1000); // end od setInterval
+   
+        // 
+        loadNextQuestion();
     });
 
-   
-    function reset(){
-        $("#forms").hide();
-        $("#start").show();
+    
 
-    }
 
 });
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
