@@ -16,7 +16,7 @@ body {
 }
 
 #start,
-#gameMessage {
+#gameFinishMessage {
   position: absolute;
   text-align: center;
   font-size: 80px;

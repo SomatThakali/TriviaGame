@@ -41,28 +41,28 @@ $(document).ready(function() {
 
   // helper function for displaying finish message
   function displayFinishMessage(finish) {
-    $("#gameMessage").text(finish);
+    $("#gameFinishMessage").text(finish);
 
     setTimeout(() => {
       console.log("show game message timeout");
-      $("#gameMessage").show();
+      $("#gameFinishMessage").show();
     }, 2001);
     setTimeout(() => {
       console.log("hide game message timeout");
-      $("#gameMessage").hide();
-    }, 5000);
+      $("#gameFinishMessage").hide();
+    }, 4000);
   }
 
   $("#forms").hide(); // Before the user clicks the start, the forms should be hidden
-  $("#gameMessage").hide();
+  $("#gameFinishMessage").hide();
 
   function loadQuestion(questionIndex) {
-    var index = questions[questionIndex];
-    $("#question").text(index.question);
-    $("#choice1").text(index.possibleAnswers[0]);
-    $("#choice2").text(index.possibleAnswers[1]);
-    $("#choice3").text(index.possibleAnswers[2]);
-    $("#choice4").text(index.possibleAnswers[3]);
+    var questionObj = questions[questionIndex]; // this is an object of a questions array
+    $("#question").text(questionObj.question);
+    $("#choice1").text(questionObj.possibleAnswers[0]);
+    $("#choice2").text(questionObj.possibleAnswers[1]);
+    $("#choice3").text(questionObj.possibleAnswers[2]);
+    $("#choice4").text(questionObj.possibleAnswers[3]);
   }
 
   // Evaluate if the user guess is right or wrong and increment the question
@@ -94,7 +94,7 @@ $(document).ready(function() {
         setTimeout(location.reload.bind(location), 5000); // After 5 seconds the page will reload
         return;
       }
-      loadQuestion(currentQuestion);
+      loadQuestion(currentQuestion); // load the next question
     });
   } //
 
