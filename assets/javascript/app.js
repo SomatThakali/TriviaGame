@@ -54,26 +54,28 @@ function displayFinishMessage(finish) {
 
 var count = 9;
 var timer;
+var displayQuestionTimeout;
 
 function timer() {
   count--;
   if (count <= 0) {
-    setTimeout(function() {
-      timerForNextQuestion();
-    });
+    displayResult("ran out of time");
+    timerForNextQuestion();
   } else {
     $("#count").text(count);
   }
 }
 function timerForNextQuestion() {
-  currentQuestion++;
   clearInterval(counter);
+  checkGameOver();
+
   count = 9;
   $("#count").text("");
-  setTimeout(function() {
-    // displayResult("Time Out");
+
+  currentQuestion++;
+  displayQuestionTimeout = setTimeout(function() {
+    displayQuestion(currentQuestion);
   }, 2000);
-  displayQuestion(currentQuestion);
 }
 
 $("#forms").hide(); // Before the user clicks the start, the forms should be hidden
@@ -90,6 +92,21 @@ function displayQuestion(questionIndex) {
   counter = setInterval(timer, 1000);
 }
 
+function checkGameOver() {
+  console.log(
+    "DEBUG >> checking for end game,",
+    currentQuestion,
+    totalQuestion
+  );
+  if (currentQuestion == totalQuestion) {
+    console.log("You are finished");
+    clearTimeout(hideFormTimeout);
+    clearTimeout(displayQuestionTimeout);
+    displayFinishMessage("Finish");
+    // setTimeout(location.reload.bind(location), 3000); // After 5 seconds the page will reload
+    return;
+  }
+}
 // Evaluate if the user guess is right or wrong and increment the question
 function checkUserGuess() {
   $("input").on("click", function() {
@@ -111,13 +128,7 @@ function checkUserGuess() {
 
     // currentQuestion++;
 
-    if (currentQuestion == totalQuestion - 1) {
-      console.log("You are finished");
-      clearTimeout(hideFormTimeout);
-      displayFinishMessage("Finish");
-      setTimeout(location.reload.bind(location), 3000); // After 5 seconds the page will reload
-      return;
-    }
+    checkGameOver();
     // displayQuestion(currentQuestion); // load the next question
     timerForNextQuestion();
   });
