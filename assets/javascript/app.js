@@ -47,7 +47,7 @@ function DisplayQuestion(questionIndex) {
   $("#question").text(questionIndex + 1 + "." + questionObj.question);
   var possibleAnswersLength = questions[questionIndex].possibleAnswers.length;
   if (possibleAnswersLength < 3) {
-    // if the options are less than 3 than hide the 2 labels
+    // if the options are less than 3 then hide the last 2 labels
     $("#choice1").text(questionObj.possibleAnswers[0]);
     $("#choice2").text(questionObj.possibleAnswers[1]);
     $("#label3").hide();
@@ -127,7 +127,7 @@ function checkUserGuess() {
 //
 timer = setInterval(count, 1000);
 
-var time = 30; // 200 s
+var time = 100; // 100 s
 function count() {
   var currentTime = timeConverter(time);
   time--;
