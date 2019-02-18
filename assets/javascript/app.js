@@ -40,6 +40,13 @@ var currentQuestion = 0; // This holds the index of question
 var totalQuestion = questions.length;
 var rightAnswer = 0;
 var wrongAnswer = 0;
+$("#container").hide();
+
+function startGame() {
+  $("#container").show();
+  $("#start").hide();
+  timer = setInterval(count, 1000);
+}
 
 function DisplayQuestion(questionIndex) {
   $("#countQuestion").text(currentQuestion + 1 + "/" + totalQuestion);
@@ -118,14 +125,12 @@ function checkUserGuess() {
     clearInterval(timer);
     displayScore();
     displayRightAnswerMessage;
-    return;
+    $(".resetBtn").show();
+    // return;
   }
 
   DisplayQuestion(currentQuestion);
 }
-
-//
-timer = setInterval(count, 1000);
 
 var time = 100; // 100 s
 function count() {
