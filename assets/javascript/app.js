@@ -7,18 +7,6 @@ var questions = [
   },
 
   {
-    question:
-      "What is the correct syntax for referring to an external script called “app.js”? ",
-    possibleAnswers: [
-      " <script src=”app.js”>",
-      " <script href=”app.js”>",
-      " <script ref=”app.js”>",
-      " <script name=”app.js”>"
-    ],
-    answer: 0
-  },
-
-  {
     question: " Which of the following is an advantage of using JavaScript? ",
     possibleAnswers: [
       "Increased interactivity",
@@ -75,6 +63,19 @@ function displayScore() {
   $("#displayWrong").text("You got " + wrongAnswer + " wrong answers");
 }
 
+function displayRightAnswerMessage() {
+  var rightAnswer = questions[currentQuestion].answer;
+  var message =
+    "The right answer of: " +
+    '" ' +
+    questions[currentQuestion].question +
+    '"' +
+    " was: " +
+    questions[currentQuestion].possibleAnswers[rightAnswer];
+  var rightAnswerMessage = $("<p class ='paragraph'>").text(message);
+  $("#displayRightAnswer").append(rightAnswerMessage);
+}
+
 function checkUserGuess() {
   var selectOption = document.querySelector("input[type=radio]:checked");
 
@@ -90,6 +91,16 @@ function checkUserGuess() {
     rightAnswer++;
   } else {
     wrongAnswer++;
+
+    displayRightAnswerMessage();
+    console.log(
+      "The right answer of: " +
+        '" ' +
+        questions[currentQuestion].question +
+        '"' +
+        " was " +
+        questions[currentQuestion].possibleAnswers[ans]
+    );
   }
   selectOption.checked = false;
   currentQuestion++;
@@ -101,6 +112,7 @@ function checkUserGuess() {
   if (currentQuestion == totalQuestion) {
     $("#container").hide();
     displayScore();
+    displayRightAnswerMessage;
     return;
   }
 
@@ -110,7 +122,7 @@ function checkUserGuess() {
 //
 timer = setInterval(count, 1000);
 
-var time = 200; // 200 s
+var time = 30; // 200 s
 function count() {
   var currentTime = timeConverter(time);
   time--;
@@ -120,6 +132,7 @@ function count() {
     alert("Your time is up! ");
     $("#container").hide();
     $("#displayScore").text("Your got  " + rightAnswer + " right answers");
+    displayRightAnswerMessage();
     return;
   }
 }
