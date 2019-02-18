@@ -4,7 +4,7 @@ body {
 }
 #container {
   position: absolute;
-  height: 450px;
+  height: auto;
   width: 1000px;
   background-color: #d6e755;
   left: 50%;
@@ -21,7 +21,11 @@ body {
   text-align: center;
   font-size: 30px;
 }
-
+#countQuestion {
+  font-size: 20px;
+  margin-left: 5px;
+  display: inline-block;
+}
 #question {
   font-size: 30px;
   padding: 20px;

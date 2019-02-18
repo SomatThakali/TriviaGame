@@ -1,40 +1,55 @@
 // initialize questions for quiz
 var questions = [
   {
-    question: "What is the capital of Nepal? ",
-    possibleAnswers: ["Pokhara", "Kathmandu", "Jomsom", "Delhi"],
+    question: " Which of the following is not a reserved word in JavaScript?",
+    possibleAnswers: [" interface", " program", " throws", "short"],
     answer: 1
   },
 
   {
-    question: "What is the capital of India? ",
-    possibleAnswers: ["Delhi", "Mumbai", "Banglore", "Chennai"],
+    question:
+      "What is the correct syntax for referring to an external script called “app.js”? ",
+    possibleAnswers: [
+      " <script src=”app.js”>",
+      " <script href=”app.js”>",
+      " <script ref=”app.js”>",
+      ". <script name=”app.js”>"
+    ],
     answer: 0
   },
 
   {
-    question: "What is the capital of USA? ",
-    possibleAnswers: ["New York", "Boston", "Washingon DC", "Maryland"],
-    answer: 2
+    question: " Which of the following is an advantage of using JavaScript? ",
+    possibleAnswers: [
+      "Increased interactivity",
+      " Less server interaction",
+      "Immediate feedback from the users",
+      "All of the above"
+    ],
+    answer: 3
   }
 ];
 
 // get quiz elements
 var currentQuestion = 0; // This holds the index of question
 var totalQuestion = questions.length;
-var score = 0;
+var rightAnswer = 0;
 var wrongAnswer = 0;
 
 function DisplayQuestion(questionIndex) {
   var questionObj = questions[questionIndex]; // this is an object of a questions array
-  $("#question").text(questionObj.question);
+  $("#question").text(questionIndex + 1 + "." + questionObj.question);
   $("#choice1").text(questionObj.possibleAnswers[0]);
   $("#choice2").text(questionObj.possibleAnswers[1]);
   $("#choice3").text(questionObj.possibleAnswers[2]);
   $("#choice4").text(questionObj.possibleAnswers[3]);
 }
 
-// Evaluate if the user guess is right or wrong and increment the question
+function displayScore() {
+  $("#displayScore").text("Your got  " + rightAnswer + " right answers");
+  $("#displayWrong").text("You got " + wrongAnswer + " wrong answers");
+}
+
 function checkUserGuess() {
   var selectOption = document.querySelector("input[type=radio]:checked");
 
@@ -47,7 +62,7 @@ function checkUserGuess() {
   var ans = questions[currentQuestion].answer;
 
   if (userChoice == ans) {
-    score++;
+    rightAnswer++;
   } else {
     wrongAnswer++;
   }
@@ -55,31 +70,31 @@ function checkUserGuess() {
   currentQuestion++;
 
   if (currentQuestion == totalQuestion - 1) {
-    $(".nextBtn").html = "Finish";
+    $(".nextBtn").text("Finish");
   }
 
   if (currentQuestion == totalQuestion) {
     $("#container").hide();
-    console.log(score);
-    $("#displayScore").text("Your got  " + score + " right answers");
-    $("#displayWrong").text("You got " + wrongAnswer + " wrong answers");
-
+    displayScore();
     return;
   }
+
   DisplayQuestion(currentQuestion);
 }
 
+//
 timer = setInterval(count, 1000);
 
-var time = 30; // 100 s
+var time = 200; // 200 s
 function count() {
   var currentTime = timeConverter(time);
   time--;
   $("#count").text("Remaining time is: " + currentTime);
-  if (time <= 0) {
+  $("#countQuestion").text(currentQuestion + 1 + "/" + totalQuestion);
+  if (time === 0) {
+    alert("Your time is up! ");
     $("#container").hide();
-    console.log(score);
-    $("#displayScore").text("Your Score is " + score);
+    $("#displayScore").text("Your got  " + rightAnswer + " right answers");
     return;
   }
 }
@@ -97,4 +112,5 @@ function timeConverter(t) {
   }
   return minutes + ":" + seconds;
 }
+
 DisplayQuestion(currentQuestion);
