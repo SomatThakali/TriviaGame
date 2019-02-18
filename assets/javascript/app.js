@@ -13,7 +13,7 @@ var questions = [
       " <script src=”app.js”>",
       " <script href=”app.js”>",
       " <script ref=”app.js”>",
-      ". <script name=”app.js”>"
+      " <script name=”app.js”>"
     ],
     answer: 0
   },
@@ -27,6 +27,23 @@ var questions = [
       "All of the above"
     ],
     answer: 3
+  },
+  {
+    question: " JavaScript is a ________ Side Scripting Language. ",
+    possibleAnswers: ["Server", " ISP", " Browser", "None of the above"],
+    answer: 2
+  },
+  {
+    question: " JavaScript is ________ language. ",
+    possibleAnswers: [" a compiled", " an interpreted"],
+    answer: 1
+  },
+
+  {
+    question:
+      "Adding White Space to scripts may slow down the execution speed of a script. ",
+    possibleAnswers: ["True", " False"],
+    answer: 1
   }
 ];
 
@@ -39,10 +56,18 @@ var wrongAnswer = 0;
 function DisplayQuestion(questionIndex) {
   var questionObj = questions[questionIndex]; // this is an object of a questions array
   $("#question").text(questionIndex + 1 + "." + questionObj.question);
-  $("#choice1").text(questionObj.possibleAnswers[0]);
-  $("#choice2").text(questionObj.possibleAnswers[1]);
-  $("#choice3").text(questionObj.possibleAnswers[2]);
-  $("#choice4").text(questionObj.possibleAnswers[3]);
+  var possibleAnswersLength = questions[questionIndex].possibleAnswers.length;
+  if (possibleAnswersLength < 3) {
+    $("#choice1").text(questionObj.possibleAnswers[0]);
+    $("#choice2").text(questionObj.possibleAnswers[1]);
+    $("#label3").hide();
+    $("#label4").hide();
+  } else {
+    $("#choice1").text(questionObj.possibleAnswers[0]);
+    $("#choice2").text(questionObj.possibleAnswers[1]);
+    $("#choice3").text(questionObj.possibleAnswers[2]);
+    $("#choice4").text(questionObj.possibleAnswers[3]);
+  }
 }
 
 function displayScore() {
