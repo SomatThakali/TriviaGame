@@ -40,6 +40,7 @@ var currentQuestion = 0; // This holds the index of question
 var totalQuestion = questions.length;
 var rightAnswer = 0;
 var wrongAnswer = 0;
+
 $("#container").hide();
 
 function startGame() {
@@ -125,8 +126,7 @@ function checkUserGuess() {
     clearInterval(timer);
     displayScore();
     displayRightAnswerMessage;
-    $(".resetBtn").show();
-    // return;
+    return;
   }
 
   DisplayQuestion(currentQuestion);
