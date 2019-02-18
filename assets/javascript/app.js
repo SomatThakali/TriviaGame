@@ -108,7 +108,9 @@ function checkUserGuess() {
   currentQuestion++;
 
   if (currentQuestion == totalQuestion - 1) {
-    $(".nextBtn").text("Finish");
+    $(".nextBtn")
+      .attr("class", "finish")
+      .text("Finish");
   }
 
   if (currentQuestion == totalQuestion) {

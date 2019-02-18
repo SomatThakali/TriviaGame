@@ -63,6 +63,20 @@ body {
   color: #f6f6f6;
 }
 
+button:focus {
+  outline: none;
+}
+
+.finish {
+  width: 100px;
+  height: 35px;
+  border-radius: 20px;
+  cursor: pointer;
+  float: right;
+  margin: 10px;
+  color: red;
+}
+
 #displayScore,
 #displayWrong {
   height: 100px;
