@@ -42,10 +42,12 @@ var rightAnswer = 0;
 var wrongAnswer = 0;
 
 function DisplayQuestion(questionIndex) {
+  $("#countQuestion").text(currentQuestion + 1 + "/" + totalQuestion);
   var questionObj = questions[questionIndex]; // this is an object of a questions array
   $("#question").text(questionIndex + 1 + "." + questionObj.question);
   var possibleAnswersLength = questions[questionIndex].possibleAnswers.length;
   if (possibleAnswersLength < 3) {
+    // if the options are less than 3 than hide the 2 labels
     $("#choice1").text(questionObj.possibleAnswers[0]);
     $("#choice2").text(questionObj.possibleAnswers[1]);
     $("#label3").hide();
@@ -111,6 +113,7 @@ function checkUserGuess() {
 
   if (currentQuestion == totalQuestion) {
     $("#container").hide();
+    clearInterval(timer);
     displayScore();
     displayRightAnswerMessage;
     return;
@@ -127,9 +130,10 @@ function count() {
   var currentTime = timeConverter(time);
   time--;
   $("#count").text("Remaining time is: " + currentTime);
-  $("#countQuestion").text(currentQuestion + 1 + "/" + totalQuestion);
+
   if (time === 0) {
     alert("Your time is up! ");
+    clearInterval(timer);
     $("#container").hide();
     $("#displayScore").text("Your got  " + rightAnswer + " right answers");
     displayRightAnswerMessage();
