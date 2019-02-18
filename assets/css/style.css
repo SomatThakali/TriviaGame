@@ -1,60 +1,67 @@
 body {
   font-family: "Concert One";
+  background: yellow;
 }
 #container {
   position: absolute;
-  height: 600px;
-  width: 800px;
-  background-color: yellow;
+  height: 450px;
+  width: 1000px;
+  background-color: #d6e755;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  padding: 20px;
+  border: 1px solid;
+  box-shadow: 0 0 6px 2px #fff;
 }
 
-#forms {
-  padding-top: 50px;
-}
-
-#start,
-#gameFinishMessage {
-  position: absolute;
-  text-align: center;
-  font-size: 80px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-#user-answer-message {
-  position: absolute;
+.title,
+#count {
+  padding-top: 20px;
   text-align: center;
   font-size: 30px;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
 }
 
-#count {
-  text-align: center;
-  font-size: 40px;
-}
 #question {
   font-size: 30px;
-  padding: 10px 0px 10px 40px;
-  margin: 25px 10px 0 55px;
-  height: 60px;
-  width: 700px;
-  border-radius: 10px;
-  background-color: #d6e755;
+  padding: 20px;
+  margin: 10px 0 10px 0;
+  border-radius: 20px;
+  background-color: #fffe70;
 }
 .option {
-  height: 40px;
-  width: 700px;
-  padding: 10px 0px 10px 40px;
-  margin: 25px 10px 0 55px;
-  border-radius: 10px;
-  background-color: #d6e755;
+  width: 460px;
+  padding: 10px 0px 10px 15px;
+  margin: 10px 0 10px 10px;
+  border-radius: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #fffe70;
 }
 
-input[type="radio"] {
-  visibility: hidden;
+.option:hover {
+  background-color: #f7c746;
+  color: #f6f6f6;
+}
+
+.nextBtn {
+  width: 100px;
+  height: 35px;
+  border-radius: 20px;
+  cursor: pointer;
+  float: right;
+  margin: 10px;
+}
+
+.nextBtn:hover {
+  background: #f7c746;
+  color: #f6f6f6;
+}
+
+#displayScore,
+#displayWrong {
+  height: 100px;
+  text-align: center;
+  padding-top: 20px;
+  font-size: 50px;
 }

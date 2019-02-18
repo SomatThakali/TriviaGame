@@ -53,34 +53,31 @@
   </head>
   <body>
     <div id="container">
-      <h2 class="text-center pt-4 mt-3">Totally Trivial Game</h2>
-      <div id="start">Start</div>
+      <h2 class="title ">Trivial Game</h2>
+      <div id="count">Time Remaining:</div>
+      <div id="question"></div>
 
-      <div id="count"></div>
-      <div id="forms">
-        <div id="question"></div>
-
-        <label class="option">
-          <input type="radio" checked name="quiz" value="0"/>
-          <span id="choice1"></span
-        ></label>
-        <label class="option">
-          <input type="radio" checked name="quiz" value="1" />
-          <span id="choice2"></span>
-        </label>
-        <label class="option">
-          <input type="radio" checked name="quiz" value="2"/>
-          <span id="choice3"></span
-        ></label>
-        <label class="option">
-          <input type="radio" checked name="quiz" value="3"/>
-          <span id="choice4"></span
-        ></label>
-      </div>
-
-      <div id="gameFinishMessage"></div>
-      <div id="user-answer-message"></div>
+      <label class="option">
+        <input type="radio" name="quiz" value="0"/>
+        <span id="choice1"></span
+      ></label>
+      <label class="option">
+        <input type="radio" name="quiz" value="1" />
+        <span id="choice2"></span>
+      </label>
+      <label class="option">
+        <input type="radio" name="quiz" value="2"/>
+        <span id="choice3"></span
+      ></label>
+      <label class="option">
+        <input type="radio" name="quiz" value="3"/>
+        <span id="choice4"></span
+      ></label>
+      <button class="nextBtn" onclick=" checkUserGuess();">Next</button>
     </div>
+    <div id="displayScore"></div>
+    <div id="displayWrong"></div>
+
     <script type="text/javascript" src="./assets/javascript/app.js"></script>
   </body>
 </html>
