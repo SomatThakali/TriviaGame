@@ -30,8 +30,8 @@ var questions = [
   {
     question:
       "Adding White Space to scripts may slow down the execution speed of a script. ",
-    possibleAnswers: ["True", " False"],
-    answer: 1
+    possibleAnswers: [" False", "True"],
+    answer: 0
   }
 ];
 
@@ -42,6 +42,7 @@ var rightAnswer = 0;
 var wrongAnswer = 0;
 
 $("#container").hide();
+$(".resetBtn").hide();
 
 function startGame() {
   $("#container").show();
@@ -71,6 +72,7 @@ function DisplayQuestion(questionIndex) {
 function displayScore() {
   $("#displayScore").text("Your got  " + rightAnswer + " right answers");
   $("#displayWrong").text("You got " + wrongAnswer + " wrong answers");
+  $(".resetBtn").show();
 }
 
 function displayRightAnswerMessage() {
@@ -101,17 +103,9 @@ function checkUserGuess() {
     rightAnswer++;
   } else {
     wrongAnswer++;
-
     displayRightAnswerMessage();
-    console.log(
-      "The right answer of: " +
-        '" ' +
-        questions[currentQuestion].question +
-        '"' +
-        " was " +
-        questions[currentQuestion].possibleAnswers[ans]
-    );
   }
+
   selectOption.checked = false;
   currentQuestion++;
 
@@ -132,7 +126,7 @@ function checkUserGuess() {
   DisplayQuestion(currentQuestion);
 }
 
-var time = 100; // 100 s
+var time = 70; // 100 s
 function count() {
   var currentTime = timeConverter(time);
   time--;
@@ -143,6 +137,7 @@ function count() {
     clearInterval(timer);
     $("#container").hide();
     $("#displayScore").text("Your got  " + rightAnswer + " right answers");
+    $(".resetBtn").show();
     displayRightAnswerMessage();
     return;
   }

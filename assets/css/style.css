@@ -4,7 +4,7 @@ body {
 }
 #container {
   position: absolute;
-  height: auto;
+  height: 490px;
   width: 1000px;
   background-color: #d6e755;
   left: 50%;
@@ -97,7 +97,21 @@ body {
 button:focus {
   outline: none;
 }
+.resetBtn {
+  width: 150px;
+  height: 35px;
+  border-radius: 20px;
+  cursor: pointer;
+  position: absolute;
+  left: 45%;
+  top: 60%;
+  margin: 10px;
+}
 
+.resetBtn:hover {
+  background: #f7c746;
+  color: #f6f6f6;
+}
 .finish {
   width: 100px;
   height: 35px;
