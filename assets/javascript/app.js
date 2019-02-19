@@ -126,7 +126,7 @@ function checkUserGuess() {
   DisplayQuestion(currentQuestion);
 }
 
-var time = 70; // 100 s
+var time = 70; // 70 s
 function count() {
   var currentTime = timeConverter(time);
   time--;
